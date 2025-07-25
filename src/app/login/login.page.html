@@ -1,0 +1,72 @@
+<ion-content [fullscreen]="true">
+  <section>
+    <article></article>
+    <article>
+      <div></div>
+      <div>
+      <h1>CredApp</h1>
+        @if (section === 'esqueci-senha') {
+          <form [formGroup]="formRecuperarSenha">
+            <ion-item lines="none" class="ion-margin-bottom">
+              <ion-input
+                label="E-mail"
+                labelPlacement="stacked"
+                placeholder="Digite seu e-mail"
+                formControlName="email"
+                aria-label="Email"
+                class="custom"
+                maxlength="120"
+                errorText="Informe um e-mail válido"
+              ></ion-input>
+            </ion-item>
+            <ion-button class="ion-margin-bottom" expand="block" (click)="recuperarSenha()"
+                        [disabled]="formRecuperarSenha.invalid">
+              Recuperar senha
+            </ion-button>
+            <ion-button class="w-full" expand="full" fill="clear" (click)="toggleSection('login')">
+              Voltar para o login
+            </ion-button>
+          </form>
+        }
+        @if (section === 'login') {
+          <form [formGroup]="formLogin">
+            <ion-item lines="none">
+              <ion-input
+                label="E-mail"
+                labelPlacement="stacked"
+                placeholder="Digite seu e-mail"
+                formControlName="username"
+                class="custom"
+                aria-label="Email"
+                errorText="Informe um e-mail válido"
+              ></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-input
+                labelPlacement="stacked"
+                maxlength="50"
+                type="password"
+                placeholder="Digite sua senha"
+                label="Senha"
+                class="custom"
+                formControlName="password"
+                errorText="Informe uma senha válida"
+              >
+                <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+              </ion-input>
+            </ion-item>
+            <ion-button class="esqueci-senha" fill="clear" (click)="toggleSection('esqueci-senha')">
+              Esqueci a senha
+            </ion-button>
+            <ion-button expand="block" (click)="login()" [disabled]="formLogin.invalid">
+              Entrar
+            </ion-button>
+          </form>
+        }
+      </div>
+      <div class="footer">
+        <p>Versão - 1.0.0</p>
+      </div>
+    </article>
+  </section>
+</ion-content>

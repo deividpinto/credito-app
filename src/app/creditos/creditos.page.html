@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Créditos</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Créditos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <section>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Consultar</ion-card-title>
+        <ion-card-subtitle>Lista de créditos</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <article>
+          <ion-searchbar [animated]="true" debounce="600" placeholder="Digite o número NFS-e"
+                         (ionInput)="buscarPor($event)"></ion-searchbar>
+        </article>
+        @if (creditos$ | async; as creditos) {
+          <ion-list lines="full">
+            @for (credito of creditos; track credito.id) {
+              <ion-item detail="true" button="true" [routerLink]="'credito' + '/' + credito.numeroCredito">
+                <ion-icon slot="start" name="cash-outline"></ion-icon>
+                <ion-label>
+                  <h2>{{ credito.numeroNfse }}</h2>
+                  <p>{{ credito.valorIssqn | currency:'BRL' }}</p>
+                  <p>{{ credito.tipoCredito }}</p>
+                </ion-label>
+              </ion-item>
+            } @empty {
+              <ion-text class="ion-text-center"><p>Nenhum crédito encontrado</p></ion-text>
+            }
+          </ion-list>
+        } @else {
+          <ion-list lines="full">
+            @for (i of [1, 2]; track i) {
+              <ion-item>
+                <ion-avatar slot="start">
+                  <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                </ion-avatar>
+                <ion-label>
+                  <h2>
+                    <ion-skeleton-text [animated]="true" style="width: 120px"></ion-skeleton-text>
+                  </h2>
+                  <p>
+                    <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+                  </p>
+                  <p>
+                    <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+                  </p>
+                </ion-label>
+              </ion-item>
+            }
+          </ion-list>
+        }
+      </ion-card-content>
+    </ion-card>
+  </section>
+</ion-content>

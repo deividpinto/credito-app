@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { StorageService } from './shared/services/storage.service';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -7,13 +11,38 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    {title: 'Créditos', url: '/creditos', icon: 'wallet'},
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+
+  constructor(private storageService: StorageService,
+              private router: Router,
+              private alertController: AlertController) {
+  }
+
+  async confirmarSair() {
+    const alert = await this.alertController.create({
+      header: 'Atenção!',
+      subHeader: '',
+      message: 'Tem certeza que deseja sair?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.info('Alert canceled');
+          },
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            this.storageService.clearUsuario();
+            this.router.navigate(['/login']);
+          },
+        },
+      ]
+    });
+
+    await alert.present();
+  }
 }

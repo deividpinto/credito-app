@@ -1,0 +1,27 @@
+ion-card {
+  ion-card-header {
+    padding: 1rem;
+  }
+
+  ion-card-content {
+    padding: 1rem;
+
+    ion-grid {
+      margin: 0;
+      padding: 0;
+
+      ion-col {
+        padding: 0 0 0.5rem 0;
+
+        p {
+          font-size: 14px;
+        }
+
+        h3 {
+          font-size: 16px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
