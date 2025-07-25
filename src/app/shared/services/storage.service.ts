@@ -7,7 +7,7 @@ const USUARIO = '_usuario';
   providedIn: 'root'
 })
 export class StorageService {
-  private prefix = '_piscofarmacos-v1';
+  private prefix = '_credito-app-v1';
 
   constructor() {
   }

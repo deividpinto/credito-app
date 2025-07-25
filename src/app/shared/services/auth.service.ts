@@ -32,7 +32,7 @@ export class AuthService extends AbstractService<any> {
 
   isLoggedIn(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.storageService.getToken()) {
-      this.router.navigate(['/classe-psicofarmaco'], {replaceUrl: true});
+      this.router.navigate(['/creditos'], {replaceUrl: true});
       return false;
     }
     return true;
@@ -50,7 +50,7 @@ export class AuthService extends AbstractService<any> {
     const data: { perfis: string[] } = next.data as { perfis: string[] };
     const usuario = this.storageService.getUsuario();
     if (data && !data.perfis.includes(usuario.perfil)) {
-      this.router.navigate(['/classe-psicofarmaco'], {replaceUrl: true});
+      this.router.navigate(['/creditos'], {replaceUrl: true});
       return false;
     }
     return true;
