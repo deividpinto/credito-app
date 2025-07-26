@@ -16,7 +16,8 @@ export class CreditoPage implements OnInit {
 
   constructor(
     private creditoService: CreditoService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+  ) {
   }
 
   ngOnInit() {

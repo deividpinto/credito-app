@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { delay, Observable } from 'rxjs';
 import { Credito } from '../shared/interfaces/credito.interface';
 import { CreditoService } from '../shared/services/credito.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-creditos',
@@ -12,10 +13,16 @@ import { CreditoService } from '../shared/services/credito.service';
 export class CreditosPage implements OnInit {
   creditos$!: Observable<Credito[]>;
 
-  constructor(private creditoService: CreditoService) {
+  constructor(private creditoService: CreditoService,
+              private menuController: MenuController) {
   }
 
   ngOnInit() {
+
+  }
+
+  ionViewWillEnter() {
+    this.menuController.enable(true);
   }
 
   ionViewDidEnter() {

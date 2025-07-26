@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { CreditoPageRoutingModule } from './credito-routing.module';
 
 import { CreditoPage } from './credito.page';
+import { SkeletonModule } from '../../shared/components/skeleton/skeleton.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    CreditoPageRoutingModule
-  ],
+	imports: [
+		CommonModule,
+		FormsModule,
+		IonicModule,
+		CreditoPageRoutingModule,
+		SkeletonModule
+	],
   declarations: [CreditoPage]
 })
 export class CreditoPageModule {}

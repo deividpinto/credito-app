@@ -5,6 +5,7 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/ro
 import { StorageService } from './storage.service';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { AuthResponse } from '../interfaces/auth-response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,10 @@ export class AuthService extends AbstractService<any> {
     super('auth', httpClient);
   }
 
-  entrar(auth: any) {
+  entrar(auth: { email: string, senha: string }) {
     return this.post(auth).pipe(
-      tap((retorno: any) => {
-        this.storageService.setToken(retorno.access_token);
+      tap((retorno: AuthResponse) => {
+        this.storageService.setToken(retorno.token);
         this.storageService.setUsuario(retorno.usuario);
         this.usuario$.next(retorno.usuario);
       }),
@@ -54,9 +55,5 @@ export class AuthService extends AbstractService<any> {
       return false;
     }
     return true;
-  }
-
-  limparUsuario() {
-    this.storageService.clearUsuario();
   }
 }

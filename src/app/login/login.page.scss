@@ -61,12 +61,6 @@ section {
       text-transform: none;
     }
   }
-
-  .esqueci-senha {
-    --padding-start: 0;
-    margin: 1rem 0;
-    font-size: 14px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -80,23 +74,6 @@ section {
       padding: 0 1.5rem;
     }
   }
-}
-
-/* Media query para tablets */
-@media (min-width: 769px) and (max-width: 1024px) {
-}
-
-/* Media query para telas grandes (desktops) */
-@media (min-width: 1025px) {
-}
-
-/* Media query para orientação da tela (retrato ou paisagem) */
-@media (orientation: portrait) {
-  /* Estilos específicos para modo retrato */
-}
-
-@media (orientation: landscape) {
-  /* Estilos específicos para modo paisagem */
 }
 
 
