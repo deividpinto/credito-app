@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { loggingInterceptor } from './shared/interceptors/auth.interceptor';
 
 registerLocaleData(ptBr);
 
@@ -16,7 +17,7 @@ registerLocaleData(ptBr);
   providers: [
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     {provide: LOCALE_ID, useValue: 'pt'},
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([loggingInterceptor])),
   ],
   bootstrap: [AppComponent],
 })

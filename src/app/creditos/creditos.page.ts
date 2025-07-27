@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { delay, Observable } from 'rxjs';
 import { Credito } from '../shared/interfaces/credito.interface';
 import { CreditoService } from '../shared/services/credito.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-creditos',
@@ -9,13 +10,16 @@ import { CreditoService } from '../shared/services/credito.service';
   styleUrls: ['./creditos.page.scss'],
   standalone: false
 })
-export class CreditosPage implements OnInit {
+export class CreditosPage {
   creditos$!: Observable<Credito[]>;
+  private readonly menuController = inject(MenuController);
+  private readonly creditoService = inject(CreditoService);
 
-  constructor(private creditoService: CreditoService) {
+  constructor() {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
+    this.menuController.enable(true);
   }
 
   ionViewDidEnter() {

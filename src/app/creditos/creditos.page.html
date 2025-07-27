@@ -44,17 +44,17 @@
             @for (i of [1, 2]; track i) {
               <ion-item>
                 <ion-avatar slot="start">
-                  <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+                  <app-skeleton></app-skeleton>
                 </ion-avatar>
                 <ion-label>
                   <h2>
-                    <ion-skeleton-text [animated]="true" style="width: 120px"></ion-skeleton-text>
+                    <app-skeleton width="120px"></app-skeleton>
                   </h2>
                   <p>
-                    <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+                    <app-skeleton width="80px"></app-skeleton>
                   </p>
                   <p>
-                    <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+                    <app-skeleton width="80px"></app-skeleton>
                   </p>
                 </ion-label>
               </ion-item>

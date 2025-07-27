@@ -1,0 +1,15 @@
+
+services:
+  app:
+    build: .
+    container_name: credito-app
+    ports:
+      - "80:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - credito-network
+
+networks:
+  credito-network:
+    external: true

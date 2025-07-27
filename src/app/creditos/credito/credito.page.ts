@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CreditoService } from '../../shared/services/credito.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { delay, Observable } from 'rxjs';
 import { Credito } from '../../shared/interfaces/credito.interface';
 
@@ -11,18 +11,16 @@ import { Credito } from '../../shared/interfaces/credito.interface';
   standalone: false
 })
 export class CreditoPage implements OnInit {
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly creditoService = inject(CreditoService);
   numeroCredito!: string;
   credito$!: Observable<Credito>;
 
-  constructor(
-    private creditoService: CreditoService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit() {
     this.numeroCredito = this.activatedRoute.snapshot.paramMap.get('numeroCredito')!;
-    console.log('==> this.numeroCredito', this.numeroCredito);
     this.credito$ = this.creditoService.getOne('credito/' + this.numeroCredito).pipe(delay(1000));
   }
 

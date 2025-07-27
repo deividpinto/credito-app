@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Usuario } from '../interfaces/usuario.interface';
 
 const JWT_TOKEN = '_token';
 const USUARIO = '_usuario';
@@ -7,7 +8,7 @@ const USUARIO = '_usuario';
   providedIn: 'root'
 })
 export class StorageService {
-  private prefix = '_piscofarmacos-v1';
+  private prefix = '_credito-app-v1';
 
   constructor() {
   }
@@ -36,7 +37,7 @@ export class StorageService {
     localStorage.removeItem(this.prefix + JWT_TOKEN);
   }
 
-  setUsuario(usuario: any) {
+  setUsuario(usuario: Usuario) {
     this.setStorage(USUARIO, usuario);
   }
 

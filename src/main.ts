@@ -1,6 +1,19 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { AppModule } from './app/app.module';
+import { enableProdMode, Injector } from '@angular/core';
+import { environment } from './environments/environment';
+import { platformBrowser } from '@angular/platform-browser';
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.log(err));
+export let injector: Injector;
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowser()
+  .bootstrapModule(AppModule)
+  .then((ref) => {
+    injector = ref.injector;
+    // @ts-ignore
+    window['injector'] = injector;
+  })
+  .catch((err) => console.log(err));

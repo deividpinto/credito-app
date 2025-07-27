@@ -22,43 +22,43 @@
       <ion-card-content>
         <ion-grid>
           <ion-row>
-            <ion-col>
+            <ion-col size-xs="6" size-sm="4">
               <p>NFS-e</p>
               <h3>{{ credito.numeroNfse }}</h3>
             </ion-col>
-            <ion-col>
+            <ion-col size-xs="6" size-sm="4">
               <p>Tipo</p>
               <h3>{{ credito.tipoCredito }}</h3>
             </ion-col>
-            <ion-col>
+            <ion-col size-xs="6" size-sm="4">
               <p>Data da constituição</p>
               <h3>{{ credito.dataConstituicao | date:'dd/MM/yyyy' }}</h3>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col>
+            <ion-col size-xs="6" size-sm="4">
               <p>Simples nacional</p>
               <h3>{{ credito.simplesNacional ? 'Sim' : 'Não' }}</h3>
             </ion-col>
-            <ion-col>
+            <ion-col size-xs="6" size-sm="4">
               <p>ISSQN</p>
               <h3>{{ credito.valorIssqn | currency:'BRL' }}</h3>
             </ion-col>
-            <ion-col>
+            <ion-col size-xs="6" size-sm="4">
               <p>Alíquota</p>
-              <h3>{{ credito.aliquota | currency:'BRL' }}</h3>
+              <h3>{{ credito.aliquota | number }}</h3>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col>
+            <ion-col size-xs="6" size-sm="4">
               <p>Faturado</p>
               <h3>{{ credito.valorFaturado | currency:'BRL' }}</h3>
             </ion-col>
-            <ion-col>
+            <ion-col size-xs="6" size-sm="4">
               <p>Dedução</p>
               <h3>{{ credito.valorDeducao | currency:'BRL' }}</h3>
             </ion-col>
-            <ion-col>
+            <ion-col size-xs="6" size-sm="4">
               <p>Base de cálculo</p>
               <h3>{{ credito.baseCalculo | currency:'BRL' }}</h3>
             </ion-col>
@@ -70,25 +70,37 @@
     <ion-card>
       <ion-card-header>
         <ion-card-title>
-          <ion-skeleton-text style="width: 100px"></ion-skeleton-text>
+          <app-skeleton width="100px"></app-skeleton>
         </ion-card-title>
         <ion-card-subtitle>
-          <ion-skeleton-text style="width: 80px"></ion-skeleton-text>
+          <app-skeleton width="80px"></app-skeleton>
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <ion-row>
           <ion-col>
-            <p><ion-skeleton-text style="width: 80px"></ion-skeleton-text></p>
-            <h3><ion-skeleton-text style="width: 100px"></ion-skeleton-text></h3>
+            <p>
+              <app-skeleton width="80px"></app-skeleton>
+            </p>
+            <h3>
+              <app-skeleton width="100px"></app-skeleton>
+            </h3>
           </ion-col>
           <ion-col>
-            <p><ion-skeleton-text style="width: 80px"></ion-skeleton-text></p>
-            <h3><ion-skeleton-text style="width: 100px"></ion-skeleton-text></h3>
+            <p>
+              <app-skeleton width="80px"></app-skeleton>
+            </p>
+            <h3>
+              <ion-skeleton-text style="width: 100px"></ion-skeleton-text>
+            </h3>
           </ion-col>
           <ion-col>
-            <p><ion-skeleton-text style="width: 80px"></ion-skeleton-text></p>
-            <h3><ion-skeleton-text style="width: 100px"></ion-skeleton-text></h3>
+            <p>
+              <app-skeleton width="80px"></app-skeleton>
+            </p>
+            <h3>
+              <app-skeleton width="100px"></app-skeleton>
+            </h3>
           </ion-col>
         </ion-row>
       </ion-card-content>
