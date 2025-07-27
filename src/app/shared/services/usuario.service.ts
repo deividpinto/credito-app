@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AbstractService } from './abstract.service';
 import { Usuario } from '../interfaces/usuario.interface';
 
@@ -8,7 +8,7 @@ import { Usuario } from '../interfaces/usuario.interface';
 })
 export class UsuarioService extends AbstractService<Usuario> {
 
-  constructor(protected httpClient: HttpClient) {
-    super('usuarios', httpClient);
+  constructor() {
+    super('usuarios', inject(HttpClient))
   }
 }

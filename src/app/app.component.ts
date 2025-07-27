@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { StorageService } from './shared/services/storage.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
@@ -10,13 +10,14 @@ import { AlertController } from '@ionic/angular';
   standalone: false,
 })
 export class AppComponent {
+  private readonly router = inject(Router);
+  private readonly storageService = inject(StorageService);
+  private readonly alertController = inject(AlertController);
   public appPages = [
     {title: 'Créditos', url: '/creditos', icon: 'wallet'},
   ];
 
-  constructor(private storageService: StorageService,
-              private router: Router,
-              private alertController: AlertController) {
+  constructor() {
   }
 
   async confirmarSair() {

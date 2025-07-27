@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CreditoService } from '../../shared/services/credito.service';
 import { ActivatedRoute } from '@angular/router';
 import { delay, Observable } from 'rxjs';
@@ -11,13 +11,12 @@ import { Credito } from '../../shared/interfaces/credito.interface';
   standalone: false
 })
 export class CreditoPage implements OnInit {
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly creditoService = inject(CreditoService);
   numeroCredito!: string;
   credito$!: Observable<Credito>;
 
-  constructor(
-    private creditoService: CreditoService,
-    private activatedRoute: ActivatedRoute,
-  ) {
+  constructor() {
   }
 
   ngOnInit() {

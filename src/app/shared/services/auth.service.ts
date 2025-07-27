@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AbstractService } from './abstract.service';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
@@ -11,14 +11,13 @@ import { AuthResponse } from '../interfaces/auth-response.interface';
   providedIn: 'root'
 })
 export class AuthService extends AbstractService<any> {
+  private readonly router = inject(Router);
+  private readonly storageService = inject(StorageService);
   usuario$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(
-    protected httpClient: HttpClient,
-    private router: Router,
-    private storageService: StorageService
   ) {
-    super('auth', httpClient);
+    super('auth', inject(HttpClient));
   }
 
   entrar(auth: { email: string, senha: string }) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoadingController, MenuController, ToastController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,25 +10,21 @@ import { AuthService } from '../shared/services/auth.service';
   styleUrls: ['./login.page.scss'],
   standalone: false
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+  private readonly router = inject(Router);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly menuController = inject(MenuController);
+  private readonly loadingController = inject(LoadingController);
+  private readonly toastController = inject(ToastController);
   formLogin: FormGroup;
 
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private menuController: MenuController,
-    private loadingController: LoadingController,
-    private toastController: ToastController,
-  ) {
+  constructor() {
     this.menuController.enable(false);
     this.formLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
     });
-  }
-
-  ngOnInit() {
   }
 
   ionViewWillEnter() {
